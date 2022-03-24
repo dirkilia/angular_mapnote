@@ -1,0 +1,55 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Roboto+Mono&family=Roboto:wght@400;700&display=swap');
+@import url('../../assets/null.css');
+
+//MIXINS
+//Font style mixin arguments: (font-family, font-weight, font-size, line-height)
+@mixin font_style($font_family, $font_weight, $font_size, $line_height) {
+    font-family: $font_family;
+    font-weight: $font_weight;
+    font-size: $font_size;
+    line-height: $line_height;
+}
+
+.wrapper {
+    margin: 0 auto;
+    padding: 12px 11px 0 11px;
+    width: 237px;
+    height: 130px;
+    background: #0094FF;
+    border-radius: 7px;
+    color: #FFFFFF;
+    .header {
+        display: flex;
+        justify-content: space-between;
+        .card_name {
+            @include font_style('Roboto', 400, 12px, 14px)
+        }
+        .system_logo {
+            img {
+                height: 9px;
+                width: 27px;
+            } 
+        }
+    }
+    .card_number {
+        margin-top: 8px;
+        display: flex;
+        gap: 7px;
+        width: 137px;
+        height: 16px;
+        @include font_style('Roboto Mono', 400, 12px, 16px)
+    }
+    .footer {
+        margin-top: 46px;
+        display: flex;
+        justify-content: space-between;
+        .money_amount {
+            @include font_style('Roboto', 700, 18px, 21px)
+        }
+        .card_date {
+            margin-top: 10px;
+            @include font_style('Roboto', 400, 10px, 12px)
+        }
+    }
+}
