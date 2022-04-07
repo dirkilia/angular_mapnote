@@ -1,27 +1,35 @@
 import { Component } from '@angular/core';
-
-interface CardInfo {
-  name: string,
-  number: string,
-  amount: string,
-  expirationDate: string,
-  paymentSystem: "visa" | "mastercard"
-}
+import { FormControl, FormGroup, Validators } from '@angular/forms';
+import { nanoid } from 'nanoid';
 
 @Component({
-  selector: 'app-root',
+  selector: 'my-app',
   templateUrl: './app.component.html',
-  styleUrls: ['./app.component.scss']
+  styleUrls: ['./app.component.scss'],
 })
 
 
 export class AppComponent {
-  title: string = 'mapnote';
-  card_info: CardInfo = {
-    name: "some card name",
-    number: "0000000000000000",
-    amount: "4989,33₽",
-    expirationDate: "02/33",
-    paymentSystem: "visa"
+
+  public productForm: FormGroup = new FormGroup({
+    name: new FormControl(null, [Validators.required, Validators.minLength(4)]),
+    id: new FormControl(nanoid()),
+    price: new FormControl(null, [Validators.required, Validators.min(1)]),
+    categories: new FormControl([]),
+  });
+
+  public onClickGenerateButton(): void {
+    this.productForm.get('id').setValue(nanoid());
+  }
+
+  public onSubmit(): void {
+    if (this.productForm.invalid) {
+      // console.log(this.productForm.errors)
+      alert('Ошибка при заполнении формы');
+      return
+    }
+
+    console.log(this.productForm.value);
   }
 }
+

@@ -1,3 +1,36 @@
-<app-card 
-  [card_info]="card_info"
-></app-card>
+<div class="wrapper">
+    <form [formGroup]="productForm">
+        <div class="field">
+          <label for="id">ID</label>
+          <input id="id" type="text" formControlName="id" />
+          <button type="button" (click)="onClickGenerateButton()">Generate ID</button>
+        </div>
+      
+        <div class="field">
+          <label for="name">Name</label>
+          <input id="name" type="text" formControlName="name" />
+        </div>
+      
+        <div class="field">
+          <label for="price">Price</label>
+          <input id="price" type="number" formControlName="price" />
+        </div>
+      
+        <div class="field">
+          <label for="categories">Categories</label>
+          <select multiple formControlName="categories">
+            <option value="Одежда">Одежда</option>
+            <option value="Обувь">Обувь</option>
+            <option value="Лекарства">Лекарства</option>
+            <option value="Еда">Еда</option>
+            <option value="Электроника">Электроника</option>
+          </select>
+        </div>
+      
+        <div class="field">
+          <button type="button" (click)="onSubmit()">Submit</button>
+        </div>
+    </form>
+</div>
+
+  
