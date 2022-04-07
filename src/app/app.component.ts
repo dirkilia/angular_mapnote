@@ -1,27 +1,16 @@
-import { Component } from '@angular/core';
-
-interface CardInfo {
-  name: string,
-  number: string,
-  amount: string,
-  expirationDate: string,
-  paymentSystem: "visa" | "mastercard"
-}
+import { AfterViewInit, Component, VERSION } from '@angular/core';
+import { TimerService } from './timer.service';
 
 @Component({
-  selector: 'app-root',
+  selector: 'my-app',
   templateUrl: './app.component.html',
-  styleUrls: ['./app.component.scss']
+  styleUrls: ['./app.component.scss'],
 })
+export class AppComponent implements AfterViewInit {
+  name = 'Angular ' + VERSION.major;
+  constructor(private timerService: TimerService) {}
 
-
-export class AppComponent {
-  title: string = 'mapnote';
-  card_info: CardInfo = {
-    name: "some card name",
-    number: "0000000000000000",
-    amount: "4989,33₽",
-    expirationDate: "02/33",
-    paymentSystem: "visa"
+  public ngAfterViewInit() {
+    this.timerService.start();
   }
 }
