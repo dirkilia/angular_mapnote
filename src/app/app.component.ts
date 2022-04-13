@@ -1,12 +1,18 @@
+
 import { Component } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { nanoid } from 'nanoid';
+
 
 @Component({
   selector: 'my-app',
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.scss'],
 })
+export class AppComponent implements AfterViewInit {
+  name = 'Angular ' + VERSION.major;
+  constructor(private timerService: TimerService) {}
+
 
 
 export class AppComponent {
@@ -30,6 +36,8 @@ export class AppComponent {
     }
 
     console.log(this.productForm.value);
+
   }
+
 }
 
