@@ -4,13 +4,14 @@ import { BrowserModule } from '@angular/platform-browser';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 
-import { AttributeDirective } from './attribute.directive';
+import { FormatNumberPipe } from './format-number.pipe';
 
 
 @NgModule({
   declarations: [
     AppComponent,
-    AttributeDirective
+
+    FormatNumberPipe,
 
   ],
   imports: [
