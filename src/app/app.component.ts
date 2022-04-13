@@ -16,12 +16,13 @@ interface CardInfo {
 
 
 export class AppComponent {
-  title: string = 'mapnote';
-  card_info: CardInfo = {
-    name: "some card name",
-    number: "0000000000000000",
-    amount: "4989,33₽",
-    expirationDate: "02/33",
-    paymentSystem: "visa"
+
+  attributes: {id:string} = {
+    id: 'paragraph1'
+  }
+
+  onClick():void {
+    this.attributes = this.attributes.id === 'paragraph1' ? {id: 'paragraph2'} : {id: 'paragraph1'}
+
   }
 }
