@@ -1,12 +1,20 @@
-import { Component } from '@angular/core';
+
+import { AfterViewInit, Component, VERSION } from '@angular/core';
+import { TimerService } from './timer.service';
+
 
 @Component({
-  selector: 'app-root',
+  selector: 'my-app',
   templateUrl: './app.component.html',
-  styleUrls: ['./app.component.scss']
+  styleUrls: ['./app.component.scss'],
 })
+export class AppComponent implements AfterViewInit {
+  name = 'Angular ' + VERSION.major;
+  constructor(private timerService: TimerService) {}
 
 
-export class AppComponent {
-  
+  public ngAfterViewInit() {
+    this.timerService.start();
+  }
+
 }
