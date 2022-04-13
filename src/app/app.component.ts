@@ -1,6 +1,7 @@
 
-import { AfterViewInit, Component, VERSION } from '@angular/core';
-import { TimerService } from './timer.service';
+import { Component } from '@angular/core';
+import { FormControl, FormGroup, Validators } from '@angular/forms';
+import { nanoid } from 'nanoid';
 
 
 @Component({
@@ -13,8 +14,30 @@ export class AppComponent implements AfterViewInit {
   constructor(private timerService: TimerService) {}
 
 
-  public ngAfterViewInit() {
-    this.timerService.start();
+
+export class AppComponent {
+
+  public productForm: FormGroup = new FormGroup({
+    name: new FormControl(null, [Validators.required, Validators.minLength(4)]),
+    id: new FormControl(nanoid()),
+    price: new FormControl(null, [Validators.required, Validators.min(1)]),
+    categories: new FormControl([]),
+  });
+
+  public onClickGenerateButton(): void {
+    this.productForm.get('id').setValue(nanoid());
+  }
+
+  public onSubmit(): void {
+    if (this.productForm.invalid) {
+      // console.log(this.productForm.errors)
+      alert('Ошибка при заполнении формы');
+      return
+    }
+
+    console.log(this.productForm.value);
+
   }
 
 }
+

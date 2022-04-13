@@ -1,27 +1,20 @@
 import { NgModule } from '@angular/core';
+import { ReactiveFormsModule } from '@angular/forms';
 import { BrowserModule } from '@angular/platform-browser';
 import { FormsModule } from '@angular/forms';
 
 import { AppComponent } from './app.component';
 
-import { HelloComponent } from './hello.component';
-import { TimerService } from './timer.service';
-import { SET_INTERVAL, DOCUMENT } from './di_timer_dependencies';
 
 @NgModule({
-  imports: [BrowserModule, FormsModule],
-  declarations: [AppComponent, HelloComponent],
-  bootstrap: [AppComponent],
-  providers: [
-    TimerService,
-    {
-      provide: DOCUMENT,
-      useValue: document,
-    },
-    {
-      provide: SET_INTERVAL,
-      useValue: setInterval,
-    },
+  declarations: [
+    AppComponent,
+  ],
+  imports: [
+    BrowserModule,
+    AppRoutingModule,
+    ReactiveFormsModule
+
   ],
 })
 export class AppModule {}
